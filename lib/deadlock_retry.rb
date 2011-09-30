@@ -89,4 +89,10 @@ module DeadlockRetry
 
 end
 
-ActiveRecord::ConnectionAdapters::MysqlAdapter.send(:include, DeadlockRetry)
+if defined? ActiveRecord::ConnectionAdapters::MysqlAdapter
+  ActiveRecord::ConnectionAdapters::MysqlAdapter.send(:include, DeadlockRetry)
+elsif defined? ActiveRecord::ConnectionAdapters::Mysql2Adapter
+  ActiveRecord::ConnectionAdapters::Mysql2Adapter.send(:include, DeadlockRetry)
+else
+  Rails.logger.error "deadlock_retry was not able to find a MysqlAdapter to watch."
+end
