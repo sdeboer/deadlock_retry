@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.files        = Dir["{lib,test}/**/*", "[A-Z]*", "init.rb"]
   s.require_path = "lib"
 
-  s.add_development_dependency 'rails', '~> 2.3.5'
+  s.add_dependency 'rails', '~> 2.3.5'
   s.add_development_dependency 'rr', '~> 0.10.11' # 1.0.0 has respond_to? issues: http://github.com/btakita/rr/issues/issue/43
   s.add_development_dependency 'supermodel', '~> 0.1.4'
 
